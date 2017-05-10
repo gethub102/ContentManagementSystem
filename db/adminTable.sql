@@ -1,0 +1,8 @@
+CREATE TABLE admins (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	username VARCHAR(50) NOT NULL,
+	hashed_password VARCHAR(60) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+SHOW FIELDS FROM admins;
