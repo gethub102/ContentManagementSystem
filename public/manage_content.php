@@ -1,18 +1,4 @@
-<?php
-	// create connection
-	$dbhost = "localhost";
-	$dbuser = "wenbin";
-	$dbpass = "wen";
-	$dbname = "widget_corp";
-	$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-	// test if connected
-	if (mysqli_connect_errno()) {
-		die("Database connection failed: " . 
-			mysqli_connect_error() .
-			" (" . mysqli_connect_errno() . ") "
-			);
-	}
-?>
+<?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 
 <?php
@@ -23,9 +9,7 @@
 	$query .= "ORDER BY position ASC ";
 	$ret = mysqli_query($connection, $query);
 	// test if query error
-	if (!$ret) {
-		die("Database query failed.");
-	}
+	confirm_query($ret);
 ?>
 
 <?php include("../includes/layouts/header.php"); ?>
@@ -63,8 +47,3 @@
  ?>
 
 <?php include("../includes/layouts/footer.php"); ?>
-
-<?php
-	// close database
-	mysqli_close($connection);
-  ?>
