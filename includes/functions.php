@@ -5,4 +5,33 @@
 			die("Database query failed.");
 		}
 	}
+
+	/* find all subjects */ 
+	function find_all_subjects() {
+		global $connection;
+		// perform database query
+		$query = "SELECT * ";
+		$query .= "FROM subjects ";
+		$query .= "WHERE visible = 1 ";
+		$query .= "ORDER BY position ASC ";
+		$subject_set = mysqli_query($connection, $query);
+		// test if query error
+		confirm_query($subject_set);
+		return $subject_set;
+	}
+
+	/* find all pages */
+	function find_pages_for_subject($subject_id) {
+		global $connection;
+		// perform database query
+		$query = "SELECT * ";
+		$query .= "FROM pages ";
+		$query .= "WHERE visible = 1 ";
+		$query .= "AND subject_id = {$subject_id} ";
+		$query .= "ORDER BY position ASC ";
+		$page_set = mysqli_query($connection, $query);
+		// test if query error
+		confirm_query($page_set);
+		return $page_set;
+	}
 ?>
