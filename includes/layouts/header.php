@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<title>Widget Corp</title>
-	<link rel="stylesheet" type="text/css" href="stylesheets/public.css">
+	<link rel="stylesheet" type="text/css" href="./stylesheets/public.css">
 </head>
 <body>
 	<div id="header">
