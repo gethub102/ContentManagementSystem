@@ -26,13 +26,30 @@
 		// perform database query
 		$query = "SELECT * ";
 		$query .= "FROM pages ";
-		$query .= "WHERE visible = 1 ";
+		// $query .= "WHERE visible = 1 ";
 		$query .= "AND subject_id = {$subject_id} ";
 		$query .= "ORDER BY position ASC ";
 		$page_set = mysqli_query($connection, $query);
 		// test if query error
 		confirm_query($page_set);
 		return $page_set;
+	}
+
+	function find_subject_by_id($subject_id) {
+		global $connection;
+		// perform database query
+		$query = "SELECT * ";
+		$query .= "FROM subjects ";
+		$query .= "WHERE id = {$subject_id} ";
+		$query .= "LIMIT 1 ";
+		$subject_set = mysqli_query($connection, $query);
+		// test if query error
+		confirm_query($subject_set);
+		if ($subject = mysqli_fetch_assoc($subject_set)) {
+			return $subject;	
+		} else {
+			return null;
+		}
 	}
 
 	// navigation take two id
