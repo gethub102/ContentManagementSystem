@@ -75,13 +75,15 @@
 		}
 	}
 
-	// navigation take two id
-	function navigation ($selected_subject_id, $selected_page_id) {
+	// navigation take two args
+	// - the current subject array or null
+	// - the current page array or null
+	function navigation ($current_subject, $current_page) {
 		$output = "<ul class=\"subjects\">";
 		$subject_set = find_all_subjects(); 
 		while ($subject = mysqli_fetch_assoc($subject_set)) {
 			$output .=  "<li";
-			if ($subject["id"] == $selected_subject_id) {
+			if ($current_subject != null && $subject["id"] == $current_subject["id"]) {
 				$output .= " class=\"selected\"";
 			}
 			$output .= ">"; 
@@ -95,7 +97,7 @@
 				$output .= "<ul class=\"pages\">";
 					while ($page = mysqli_fetch_assoc($page_set)) {
 						$output .= "<li";
-						if ($page["id"] == $selected_page_id) {
+						if ($current_page != null && $page["id"] == $current_page["id"]) {
 							$output .= " class=\"selected\"";
 						}
 						$output .= ">"; 
