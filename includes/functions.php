@@ -75,6 +75,22 @@
 		}
 	}
 
+	/* find the current subject and page array value */
+	function find_selected_page() {
+		global $current_subject;
+		global $current_page;
+		if (isset($_GET["subject"])) {
+			$current_subject = find_subject_by_id($_GET["subject"]);
+			$current_page = null;
+		} elseif (isset($_GET["page"])) {
+			$current_page = find_page_by_id($_GET["page"]);
+			$current_subject = null;
+		} else {
+			$current_page = null;
+			$current_subject = null;
+		}
+	}
+
 	// navigation take two args
 	// - the current subject array or null
 	// - the current page array or null
