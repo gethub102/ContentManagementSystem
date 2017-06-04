@@ -132,4 +132,9 @@
 		$output .= "</ul>";
 		return $output;
 	}
+
+	/* print a new line */
+	function endline() {
+		echo "<br />";
+	}
 ?>
