@@ -18,3 +18,8 @@
 	id
 	username
 	hashed_password
+
+## some skill for developing
+
+* show all table schema
+	DESCRIBE [table];
