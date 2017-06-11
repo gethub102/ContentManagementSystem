@@ -1,4 +1,18 @@
 <?php
+	/* redirect to pages */
+	function redirect_to($new_location) {
+		header("Location: " . $new_location);
+		exit;
+	}
+
+	// escape the string for avoiding sql injection
+	function mysql_prep($string) {
+		global $connection;
+		$escaped_string = 
+		mysqli_real_escape_string($connection, $string);
+		return $escaped_string;
+	}
+
 	/* check database query good or not */
 	function confirm_query($result_set, $err_message = "errors happened") {
 		if (!$result_set) {
