@@ -15,6 +15,7 @@
 		<?php if ($current_subject) { ?>
 			<h2>Manage Content</h2>
 			Menu Name: <?php echo $current_subject["menu_name"]; ?> <br />
+			<a href="edit_subject.php?subject=<?php echo $current_subject["id"]; ?>">Edit Subject</a>
 		<?php } elseif ($current_page) { ?>
 			<?php echo "Page Name: " . $current_page["menu_name"]; ?>
 			<br />
