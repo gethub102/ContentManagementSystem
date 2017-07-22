@@ -32,7 +32,7 @@
 			<p>Visiable: 
 				<input type="radio" name="visible" value="0" /> No
 				&nbsp;
-				<input type="radio" name="visible" value="1" checked="checked"/> Yes
+				<input type="radio" name="visible" value="1" /> Yes
 			</p>
 			<input type="submit" name="submit" value="Create Subject" />
 		</form>

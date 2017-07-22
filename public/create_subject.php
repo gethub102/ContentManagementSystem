@@ -7,6 +7,9 @@
 		// process the from 
 		$menu_name = mysql_prep($_POST["menu_name"]);
 		$position = (int)$_POST["position"];
+		if (!isset($_POST["visible"])) {
+			$_POST["visible"] = null;
+		}
 		$visible = (int)$_POST["visible"];
 		
 		// validation
