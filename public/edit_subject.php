@@ -29,7 +29,7 @@ if (!$current_subject) {
 				$_POST["visible"] = null;
 			}
 			$visible = (int)$_POST["visible"];
-
+ 
 
 			$query = "UPDATE subjects SET ";
 			$query .= "menu_name = '{$menu_name}', ";
@@ -94,6 +94,9 @@ if (!$current_subject) {
 		</form>
 		<?php endLine(); ?>
 		<a href="manage_content.php">Cancel</a>
+		&nbsp;
+		&nbsp;
+		<a href="delete_subject.php?subject=<?php echo $current_subject["id"] ?>" onclick="return confirm('Are you sure?');">Delete Subject</a>
 	</div>
 </div>
 
