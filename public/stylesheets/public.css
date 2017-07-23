@@ -74,7 +74,7 @@ div.message {
 
 /* errors */
 .error {
-	color: #8D0D19; bolder: 2px solid #8D0D19;
+	color: #8D0D19; border: 2px solid #8D0D19;
 	margin: 1em 0; padding: 1em;
 }
 .error ul { padding-left: 2em; }
