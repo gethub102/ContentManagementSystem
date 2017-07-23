@@ -68,3 +68,14 @@ div.message {
 	padding: 1em;
 }
 
+.view-content {
+	margin: 1em; padding: 1em; border: 1px solid #999;
+}
+
+/* errors */
+.error {
+	color: #8D0D19; bolder: 2px solid #8D0D19;
+	margin: 1em 0; padding: 1em;
+}
+.error ul { padding-left: 2em; }
+

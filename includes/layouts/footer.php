@@ -1,5 +1,5 @@
 
-	<div id="footer" > Copyright 2017, Wenbin </div>
+	<div id="footer" > Copyright <?php echo date("Y"); ?>, Wenbin </div>
 </body>
 </html>
 
