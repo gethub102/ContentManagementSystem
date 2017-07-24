@@ -22,4 +22,6 @@
 ## some skill for developing
 
 * show all table schema
-	DESCRIBE [table];
+	- DESCRIBE [table];
+* my mysql path:
+	- /Applications/MAMP/Library/bin
