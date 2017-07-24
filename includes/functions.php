@@ -238,6 +238,7 @@
 		return $output;
 	}
 
+	/* find all the admin users through sql search */
 	function find_all_admins() {
 		global $connection;
 		$query = "SELECT * ";
@@ -248,6 +249,7 @@
 		return $admin_set;
 	}
 
+	/* find the specific admin user through its id number */
 	function find_admin_by_id($admin_id) {
 		global $connection;
 		$safe_admin_id = mysqli_real_escape_string($connection, $admin_id);
@@ -261,6 +263,39 @@
 			return $admin;
 		} else {
 			return null;
+		}
+	}
+
+	/* use blow fish algorithm to build encrypted password */
+	function pwd_encrypt($password) {
+		$hash_format = "$2y$10$"; // PHP to use Blowfish with a cost of 10
+		$salt_length = 22;        // Blowfish salts should be 22 chars or more
+		$salt = generate_salt($salt_length);
+		$format_and_salt = $hash_format . $salt;
+		$hash = crypt($password, $format_and_salt);
+		return $hash;
+	}
+
+	/* create a unique random string */
+	function generate_salt($length) {
+		// md5 returns 32 chars
+		$unique_random_string = md5(uniqid(mt_rand(), true));
+		// valid chars fro a salt are [a-Z0-9./], it returns '+' rather than '.'
+		$base64_string = base64_encode($unique_random_string);
+		// so replace '+', then...
+		$modified_base64_string = str_replace('+', '.', $base64_string);
+		// trunvate string to the correct length
+		$salt = substr($modified_base64_string, 0, $length);
+		return $salt;
+	}
+
+	function password_check($password, $existing_hash) {
+		// exsiting contains format and salt at start
+		$hash = crypt($password, $existing_hash);
+		if ($hash === $existing_hash) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 ?>

@@ -29,10 +29,10 @@
 		<br />
 		<a href="new_admin.php">Add new admin</a>
 
-		<hr />
+		<!-- <hr />
 		<?php 
 			$password = "wenbin";
-			$hash_format = "$2y$10$";
+			$hash_format = "$2y$10$"; // 2y is blowfish alg; 10 is hash function is runned
 			$salt = "Salt22CharactersOrMore";
 			echo "Length: " . strlen($salt);
 			$format_and_salt = $hash_format . $salt;
@@ -44,7 +44,7 @@
 			$hash2 = crypt("wenbin", $hash); // only get 22 chars from format and salt
 			echo "<br />";
 			echo $hash2;
-		 ?>
+		 ?> -->
 
 	</div>
 </div>
