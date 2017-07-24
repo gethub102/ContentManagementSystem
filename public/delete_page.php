@@ -3,7 +3,7 @@
 <?php require_once("../includes/functions.php"); ?>
 
 <?php  
-	$current_page = find_page_by_id(htmlentities($_GET["page"]));
+	$current_page = find_page_by_id(htmlentities($_GET["page"]),false);
 	if (!$current_page) {
 		redirect_to("manage_content.php?page=" . urlencode($_GET["page"]));
 	}

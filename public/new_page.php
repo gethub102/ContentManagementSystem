@@ -50,7 +50,7 @@
 	    }
 	}
 ?>
-
+<?php $layout_context = "admin"; ?>
 <?php include("../includes/layouts/header.php"); ?>
 <div id="main">
 	<div id="navigation">
@@ -72,7 +72,7 @@
 			<p>Position: 
 				<select name="position">
 					<?php
-						$page_set = find_pages_for_subject($current_subject["id"]);
+						$page_set = find_pages_for_subject($current_subject["id"], false);
 						$page_count = mysqli_num_rows($page_set);
 						for ($count = 1; $count <= ($page_count + 1); $count++) {
 							echo "<option value=\"{$count}\">{$count}</option>";
