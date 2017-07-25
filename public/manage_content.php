@@ -2,6 +2,7 @@
 <?php $layout_context = "admin"; ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
+<?php confirm_login(); ?>
 <?php include("../includes/layouts/header.php"); ?>
 <?php find_selected_page(); ?>
 	

@@ -289,6 +289,7 @@
 		return $salt;
 	}
 
+	/* check if the password, which is hashed, is equal to existing hashed pwd */
 	function password_check($password, $existing_hash) {
 		// exsiting contains format and salt at start
 		$hash = crypt($password, $existing_hash);
@@ -296,6 +297,48 @@
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	/* find user by its name */
+	function find_admin_by_name($username) {
+		global $connection;
+		$safe_username = mysqli_real_escape_string($connection, $username);
+		$query = "SELECT * FROM admins ";
+		$query .= "WHERE username = '{$safe_username}' ";
+		$query .= "LIMIT 1 ";
+		$result_set = mysqli_query($connection, $query);
+		confirm_query($result_set);
+		if ($admin = mysqli_fetch_assoc($result_set)) {
+			return $admin;
+		} else {
+			return null;
+		}
+	}
+
+	/* check to login authention */
+	function attempt_login($username, $password) {
+		$admin = find_admin_by_name($username);
+		if ($admin) {
+			if (password_check($password, $admin["hashed_password"])) {
+				return $admin;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	/* status is login or not */
+	function logged_in() {
+		return isset($_SESSION["id"]);
+	}
+
+	/* if user is not logged in, redirect to login page */
+	function confirm_login() {
+		if (!logged_in()) {
+			redirect_to("login.php");
 		}
 	}
 ?>
